@@ -1,0 +1,8 @@
+start_date,end_date,annual_rate,basis,confidence,note
+2023-09-01,2023-11-30,0.073,PMR_cap,confirmed,RPI was 13.5% but capped to Prevailing Market Rate
+2023-12-01,2024-01-31,0.075,PMR_cap,confirmed,gov.uk announcement 1 Dec 2023
+2024-02-01,2024-08-31,0.076,PMR_cap,estimated,gov.uk confirms 7.6% from Feb 2024; held flat pending exact month-by-month path to ~8% by Aug 2024
+2024-09-01,2025-08-31,0.043,plan1_parity,estimated,Commons Library states Plan 5 = Plan 1 rate this year; exact Bank Rate path not individually verified
+2025-09-01,2026-08-31,0.032,RPI_only,confirmed,gov.uk announcement 19 Aug 2025
+2026-09-01,2027-08-31,0.041,RPI_only,confirmed,Save the Student May 2026 citing RPI uplift
+2027-09-01,2099-12-31,0.030,assumption,assumption,central long-run RPI assumption for forward projection only
