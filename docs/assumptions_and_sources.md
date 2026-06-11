@@ -45,3 +45,43 @@ post-inflation-shock levels. This is encoded month-by-month in
 cross-checking against the gov.uk historical interest rate archive page
 directly if/when we want the exact accrued-to-date balance to be precise to
 the pound rather than to a good approximation.
+
+## Tuition fee loan cap (England, full-time undergraduate)
+
+| Academic year | Cap | Confidence | Source |
+|---|---|---|---|
+| 2023/24 | £9,250 | confirmed | frozen since 2017/18; House of Lords Library |
+| 2024/25 | £9,250 | confirmed | House of Lords Library |
+| 2025/26 | £9,535 (+3.1%) | confirmed | House of Lords Library, Warwick/Newcastle fee announcements |
+| 2026/27 | £9,790 (+2.71%) | confirmed | House of Lords Library, Prospects.ac.uk |
+| 2027/28 (context only) | £10,050 (+2.68%) | confirmed | House of Lords Library |
+
+## Maintenance loan (living away from home, outside London)
+
+Full 2026/27 sliding scale by household income (confirmed, from a university
+student finance briefing document):
+
+| Household income | 2026/27 maintenance loan |
+|---|---|
+| £25,000 | £10,830 |
+| £30,000 | £10,058 |
+| £35,000 | £9,285 |
+| £40,000 | £8,512 |
+| £45,000 | £7,739 |
+| £50,000 | £6,967 |
+| £55,000 | £6,194 |
+| £60,000 | £5,421 |
+| £65,000 | £5,048 |
+
+**Action item:** we only have a directly-confirmed sliding scale for
+2026/27. Earlier years' exact minimum-band figures in
+`data/maintenance_loan_minimum.csv` are currently backdated from the 2026/27
+figures using the known year-on-year upratings (3.1% for 2025/26, and the
+maintenance-loan upratings reported alongside each tuition fee change) --
+these are `estimated`, not `confirmed`. If exact historical Student Finance
+England entitlement letters are available, slot the real numbers in
+directly and flip the confidence rating.
+
+## Not yet sourced (needed for later stages of this project)
+
+- ONS ASHE earnings distribution/growth-rate data, for calibrating the stochastic salary model's volatility (currently using an assumption -- see below)
