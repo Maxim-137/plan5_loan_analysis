@@ -88,7 +88,7 @@ def simulate_balance(
     disbursement_idx = 0
     history = []
 
-    while current_date <= as_of_date:
+    while current_date < as_of_date:
         # Add any disbursements landing today, before today's interest accrues
         # (matches SLC convention: interest accrues on the balance including
         # the instalment paid that day).
@@ -109,6 +109,19 @@ def simulate_balance(
 
         history.append((current_date, balance))
         current_date += timedelta(days=1)
+
+    # Catch any disbursement landing exactly on as_of_date itself (counted,
+    # but with no interest yet accrued for that day -- balance "as of the
+    # morning of" as_of_date).
+    while (
+        disbursement_idx < len(disbursements)
+        and disbursements[disbursement_idx].disbursement_date == current_date
+    ):
+        amount = disbursements[disbursement_idx].amount
+        balance += amount
+        total_borrowed += amount
+        disbursement_idx += 1
+    history.append((current_date, balance))
 
     summary = {
         "final_balance": balance,
