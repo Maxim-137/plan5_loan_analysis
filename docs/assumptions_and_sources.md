@@ -85,3 +85,27 @@ directly and flip the confidence rating.
 ## Not yet sourced (needed for later stages of this project)
 
 - ONS ASHE earnings distribution/growth-rate data, for calibrating the stochastic salary model's volatility (currently using an assumption -- see below)
+
+## Salary pathway anchors (researched for the career-path modelling)
+
+| Fact | Value | Confidence | Source |
+|---|---|---|---|
+| UKRI minimum PhD stipend, 2024/25 | £19,237/year (tax-free) | confirmed | Nature careers news, UKRI |
+| UKRI minimum PhD stipend, 2025/26 | £20,780/year (+8%) | confirmed | UKRI announcement, 30 Jan 2025 |
+| UKRI minimum PhD stipend, 2026/27 | £21,805/year (+4.9%), from 1 Oct 2026 | confirmed | UKRI announcement, 5 Feb 2026 |
+| PhD stipends are not subject to Income Tax, NI, or Plan 5 repayment deductions | assumed true (stipends are bursaries, not PAYE/self-employment earnings) | assumption (high confidence, not independently verified via a dedicated search) | standard treatment of UKRI studentships; worth a direct confirmatory check before treating as settled |
+| Postdoc / Research Associate (Grade 7-equivalent) starting salary | ~£38,000-£41,000, rising to ~£46,000-£48,000 within grade | confirmed (range across multiple current job listings) | jobs.ac.uk live listings, July 2026 |
+| Postdoc average (all levels) | £40,280/year | confirmed | Indeed UK aggregate, Feb 2026 |
+| Senior Lecturer / Associate Professor | ~£52,000-£67,000 (median ~£57,000) | confirmed | Payscale UK aggregate |
+| Full Professor | not confirmed here; treated as a ~£70,000-£85,000 ceiling for modelling the far tail of the academic path | assumption | not independently sourced -- flagged as the weakest anchor in the academic pathway |
+| Science-subject graduates, median salary 15 months after graduation | £29,498 (2022/23) -> £30,000 (2023/24) | confirmed | HESA Graduate Outcomes SB275 |
+| Graduate data scientist, average starting salary | ~£35,873/year | confirmed | Glassdoor UK, Apr 2026 |
+| Data scientist, 2-5 years experience | £50,000-£65,000/year | estimated (industry aggregator, not an official survey) | upGrad UK salary guide, May 2026 |
+| Graduate quant (bank, entry) | roughly £55,000-£80,000 base in London depending on firm tier; top prop-trading firms start near the top of this range | estimated (industry guide, illustrative, self-reported aggregator data mixed with editorial commentary) | Quantt UK quant salary guide, 2026 |
+| Quant total compensation, experienced | can range very widely (£90,000 to £500,000+ at senior/prop-trading level) | estimated, high dispersion is a genuine feature of this career track, not just noise | Quantt, Glassdoor UK aggregates |
+
+**Action items:** the full-professor ceiling and the quant-track figures are
+the least rigorously sourced inputs in this project (aggregator/self-report
+sites rather than an official survey like HESA/ONS). They're good enough to
+show realistic *shape* and *relative* differences between career tracks, but
+shouldn't be read as precise.
