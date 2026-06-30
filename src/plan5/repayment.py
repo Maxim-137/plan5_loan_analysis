@@ -40,15 +40,14 @@ def threshold_on(query_date, periods=None, forward_rate_override=None,
 
     periods = periods if periods is not None else load_rate_history()
     threshold = base_threshold
-    year = freeze_until.year
+    april_date = freeze_until
 
-    while True:
-        next_april = date(year + 1, 4, 6)
-        if next_april > query_date:
-            break
-        rpi_proxy = rate_on(date(year, 9, 1), periods=periods, forward_rate_override=forward_rate_override)
+    while april_date <= query_date:
+        rpi_proxy = rate_on(
+            date(april_date.year - 1, 9, 1), periods=periods, forward_rate_override=forward_rate_override
+        )
         threshold *= (1 + rpi_proxy)
-        year += 1
+        april_date = date(april_date.year + 1, 4, 6)
 
     return threshold
 
