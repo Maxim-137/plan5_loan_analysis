@@ -109,3 +109,13 @@ the least rigorously sourced inputs in this project (aggregator/self-report
 sites rather than an official survey like HESA/ONS). They're good enough to
 show realistic *shape* and *relative* differences between career tracks, but
 shouldn't be read as precise.
+
+## Stochastic model calibration
+
+| Fact | Value used | Confidence | Source |
+|---|---|---|---|
+| UK individual earnings year-on-year volatility (SD of arc % change, UKHLS-based) | ~0.40-0.42 | confirmed (population-wide estimate) | Avram et al. (2022) via Brewer, "What Do We Know About Income and Earnings Volatility?", Review of Income and Wealth (2025) |
+| Annual log-normal sigma used in this project's stochastic model | 0.12 | assumption -- deliberately set below the population-wide figure above, because that figure pools in structural transitions (job loss, sector switches, part-time transitions) that this project models as a *separate*, explicit discrete event (see below) rather than folding into smooth continuous noise. 0.12 represents realistic bonus/raise/cost-of-living variation *conditional on staying on the same career track*. | modelling choice, stated explicitly so it can be revisited |
+| Proportion of UK/international postdocs who ever reach a permanent academic (tenured/tenure-equivalent) position | roughly 10%-15% across the general postdoc population; some UK-specific surveys report 20-30% (definitions and cohorts vary a lot between studies) | confirmed range, but with real cross-study disagreement -- flagged explicitly | CEDARS (2021), Hardy/Carter/Bowden (2016), and others, via Prosper Portal (Liverpool); UK-specific alumni tracking studies cited in an Effective Altruism Forum literature review |
+| Central "eventual permanent position" probability used in this project | 20% | assumption, chosen as a round central estimate within the sourced range above | modelling choice |
+| Note on selection bias | a Times Higher Education report on British Academy postdoctoral *fellows* specifically (a highly competitive, elite sub-population) found ~91% went on to permanent roles -- this is NOT used as the general-population estimate here, since it reflects an already-selected group, but is worth knowing as context for what a strong fellowship can do to these odds | confirmed (for that specific fellowship's alumni only) | Times Higher Education, 22 May 2025 |
