@@ -93,17 +93,17 @@ def simulate_stochastic_academic(n_simulations=2000, total_years=40,
     base_incomes = np.empty((n_simulations, total_years))
 
     for sim in range(n_simulations):
-        # Draw whether/when conversion happens, restricted to the postdoc-eligible window
-        converts = rng.random() < permanent_position_probability
-        if converts:
-            # Geometric-ish draw within the window: repeatedly test the hazard each year
-            conversion_year = phd_years + conversion_window_years  # default: converts right at window's end if loop below doesn't break early
-            for offset in range(conversion_window_years):
-                if rng.random() < annual_hazard:
-                    conversion_year = phd_years + offset
-                    break
-        else:
-            conversion_year = None  # never converts within the modelled window
+        # Test the annual hazard once per eligible year; the loop's own
+        # cumulative probability of firing already equals
+        # permanent_position_probability by construction (see
+        # _annual_hazard_from_eventual_probability), so there is no
+        # separate outer "does this person convert at all" draw needed --
+        # adding one would double-apply the probability.
+        conversion_year = None
+        for offset in range(conversion_window_years):
+            if rng.random() < annual_hazard:
+                conversion_year = phd_years + offset
+                break
 
         for year in range(total_years):
             if conversion_year is not None and year >= conversion_year:
