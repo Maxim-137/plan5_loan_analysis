@@ -47,16 +47,23 @@ def test_academic_conversion_rate_matches_target_probability():
     """Across many simulated academic careers, roughly 20% should ever reach the permanent track."""
     n_sims = 20_000
     sims = simulate_stochastic_academic(
-        n_simulations=n_sims, total_years=40, sigma_annual=0.0,
+        n_simulations=n_sims, total_years=40, sigma_annual=0.0,  # zero noise, so tracks are unambiguous
         permanent_position_probability=0.20, conversion_window_years=15, seed=7
     )
-    permanent_track = get_pathway("academic", scenario="central", total_years=40)
-    permanent_income_at_year_39 = permanent_track[39].sl_assessable_income
+
+    # With zero noise, anyone who never converts has a value at year 39
+    # EXACTLY equal to the "never converts" track's year-39 income; anyone
+    # who converted (at any point, even very late) will differ from it, even
+    # if only slightly (their post-conversion income may not have ramped up
+    # much yet). An exact-match test is therefore precise here, unlike a
+    # naive midpoint-threshold classifier, which misclassifies late
+    # converters whose post-conversion salary hasn't ramped up far above the
+    # "never converts" trajectory yet -- which is exactly what the first
+    # version of this test got wrong (it reported ~17% instead of ~20%).
     never_track = get_pathway("academic", scenario="low", total_years=40)
     never_income_at_year_39 = never_track[39].sl_assessable_income
-    threshold = 0.5 * (permanent_income_at_year_39 + never_income_at_year_39)
 
-    converted_fraction = (sims[:, 39] > threshold).mean()
+    converted_fraction = (np.abs(sims[:, 39] - never_income_at_year_39) > 1e-6).mean()
     assert abs(converted_fraction - 0.20) < 0.02, f"Got {converted_fraction}, expected ~0.20"
 
 
