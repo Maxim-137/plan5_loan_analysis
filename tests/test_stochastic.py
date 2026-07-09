@@ -47,7 +47,7 @@ def test_academic_conversion_rate_matches_target_probability():
     """Across many simulated academic careers, roughly 20% should ever reach the permanent track."""
     n_sims = 20_000
     sims = simulate_stochastic_academic(
-        n_simulations=n_sims, total_years=40, sigma_annual=0.0,  # zero noise, so tracks are unambiguous
+        n_simulations=n_sims, total_years=40, sigma_annual=0.0, sigma_persistent=0.0,  # zero noise, so tracks are unambiguous
         permanent_position_probability=0.20, conversion_window_years=15, seed=7
     )
 
@@ -70,6 +70,19 @@ def test_academic_conversion_rate_matches_target_probability():
 def test_academic_phd_years_are_never_sl_assessable():
     sims = simulate_stochastic_academic(n_simulations=200, total_years=40, sigma_annual=0.12, seed=3)
     assert np.all(sims[:, 0:4] == 0.0)
+
+
+def test_persistent_factor_creates_genuine_long_run_dispersion():
+    """
+    Regression test for the bug this was built to fix: without a
+    persistent per-career factor, every simulation just jitters around
+    the same central trajectory and year-39 outcomes barely differ
+    between simulations. With it, there should be real spread.
+    """
+    sims = simulate_stochastic_generic("industry_data", n_simulations=2000, total_years=40, seed=5)
+    year_39_values = sims[:, 39]
+    coefficient_of_variation = year_39_values.std() / year_39_values.mean()
+    assert coefficient_of_variation > 0.15, f"CoV was only {coefficient_of_variation}, expected genuine dispersion"
 
 
 if __name__ == "__main__":
