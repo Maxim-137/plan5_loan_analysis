@@ -119,3 +119,11 @@ shouldn't be read as precise.
 | Proportion of UK/international postdocs who ever reach a permanent academic (tenured/tenure-equivalent) position | roughly 10%-15% across the general postdoc population; some UK-specific surveys report 20-30% (definitions and cohorts vary a lot between studies) | confirmed range, but with real cross-study disagreement -- flagged explicitly | CEDARS (2021), Hardy/Carter/Bowden (2016), and others, via Prosper Portal (Liverpool); UK-specific alumni tracking studies cited in an Effective Altruism Forum literature review |
 | Central "eventual permanent position" probability used in this project | 20% | assumption, chosen as a round central estimate within the sourced range above | modelling choice |
 | Note on selection bias | a Times Higher Education report on British Academy postdoctoral *fellows* specifically (a highly competitive, elite sub-population) found ~91% went on to permanent roles -- this is NOT used as the general-population estimate here, since it reflects an already-selected group, but is worth knowing as context for what a strong fellowship can do to these odds | confirmed (for that specific fellowship's alumni only) | Times Higher Education, 22 May 2025 |
+
+## Loan-vs-savings decision module assumptions
+
+| Fact | Value | Confidence | Source |
+|---|---|---|---|
+| Assumed savings/investment return rates tested | 0%, 2%, 4%, 6%, 8% | assumption (a deliberate sensitivity range, not a single prediction) | 0% = cash under no growth; 2% roughly tracks a below-inflation easy-access account; 4% a typical decent easy-access/cash-ISA rate at time of writing; 6-8% span typical long-run diversified equity assumptions -- not independently re-derived from a specific index history here |
+| Growth horizon used | ~41 years (from the mid-point of the year-4 maintenance loan's three instalments to the Plan 5 write-off date, April 2068) | derived from the project's own modelled dates, not an external figure | -- |
+| Comparison basis | undiscounted nominal cash amounts (no adjustment for the time value of money beyond the compounding already applied) | assumption/simplification | a more complete treatment would discount both sides to a present value using some real discount rate; not done here, flagged as a possible refinement |
