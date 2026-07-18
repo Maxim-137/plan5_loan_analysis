@@ -2,8 +2,7 @@
 
 A from-scratch quantitative analysis of the UK Plan 5 student loan: real
 interest-rate history, income-contingent repayment mechanics, salary-pathway
-modelling, and a specific loan-vs-savings decision for a real (this
-author's) case.
+modelling, and a specific loan-vs-savings decision for a real case (mine).
 
 <p align="center">
   <img src="docs/preview/fig02_repayment_trajectories_central.png" width="98%">
